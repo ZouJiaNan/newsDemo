@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eryi.Mapper.ArticleMapper">
+    <insert id="add" parameterType="com.eryi.pojo.Article">
+        insert into articles value(null,#{type},#{author},#{file_id},#{date},#{title});
+    </insert>
+    <select id="queryAll" parameterType="com.eryi.pojo.Article" resultType="com.eryi.pojo.Article">
+        select * from articles;
+    </select>
+    <select id="queryByAuthor" parameterType="com.eryi.pojo.Article" resultType="com.eryi.pojo.Article">
+        select * from articles where author like CONCAT('%',#{author},'%') order by date desc ;
+    </select>
+    <select id="queryByType" parameterType="com.eryi.pojo.Article" resultType="com.eryi.pojo.Article">
+        select * from articles where author like CONCAT('%',#{type},'%') order by date desc ;
+    </select>
+</mapper>

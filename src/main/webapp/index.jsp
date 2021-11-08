@@ -1,5 +1,8 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.eryi.pojo.Article" %>
+<%@ page import="java.util.Iterator" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -28,6 +31,9 @@ pageEncoding="UTF-8"%>
 <body>
 <div id="page">
 <header>
+  <%
+    List<Article> articles=(List<Article>) request.getAttribute("articles");
+  %>
   <div class="container">
     <div class="row">
       <div id="header">
@@ -117,14 +123,11 @@ pageEncoding="UTF-8"%>
                 <div class="nav-inner"> 
                   <!-- BEGIN NAV -->
                   <ul id="nav" class="hidden-xs">
-                    <li> <a class="level-top" href="#"><span>首页</span></a></li>
-                    <li> <a class="level-top" href="category-1.html"><span>概况</span></a> </li>
-                    <li> <a class="level-top" href="category-2.html"><span>小说‎</span></a></li>
-                    <li> <a class="level-top" href="category-1.html"><span>散文</span></a></li>
-                    <li> <a class="level-top" href="category-2.html"><span>诗歌</span></a> </li>
-					<li> <a class="level-top" href="category-2.html"><span>诗歌</span></a> </li>
-					<li> <a class="level-top" href="category-2.html"><span>诗歌</span></a> </li>
-                    <li> <a href="category-2.html" class="level-top"> <span>Travel</span> </a></li>
+                    <li> <a class="level-top" href="/queryAll"><span>首页</span></a></li>
+                    <li> <a class="level-top" href="/queryByType?type=概况"><span>概况</span></a> </li>
+                    <li> <a class="level-top" href="/queryByType?type=小说‎"><span>小说‎</span></a></li>
+                    <li> <a class="level-top" href="/queryByType?type=散文"><span>散文</span></a></li>
+                    <li> <a class="level-top" href="/queryByType?type=诗歌"><span>诗歌</span></a> </li>
                   </ul>
                   <!--nav--> 
                 </div>
@@ -197,81 +200,7 @@ pageEncoding="UTF-8"%>
       <div>
         <div class="slider-items-products">
           <div id="top-categories" class="product-flexslider hidden-buttons">
-            <div class="slider-items slider-width-col4 products-grid">
-              <div class="item">
-                <div class="top-post">
-                  <figure class="featured-thumb"> <a href="#"> <img src="products-images/p1.jpg" alt="blog image"> </a> </figure>
-                  <!--featured-thumb-->
-                  <div class="content-info">
-                    <div class="post-category"><a href="#">小说</a></div>
-                    <h4><a href="post-1.html" title="Lorem ipsum dolor sit amet">占位符</a></h4>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Item -->
-              <div class="item">
-                <div class="top-post">
-                  <figure class="featured-thumb"> <a href="#"> <img src="products-images/p2.jpg" alt="blog image"> </a> </figure>
-                  <!--featured-thumb-->
-                  <div class="content-info">
-                    <div class="post-category"><a href="#">散文</a></div>
-                    <h4><a href="post-1.html" title="Lorem ipsum dolor sit amet">占位符</a></h4>
-                  </div>
-                </div>
-              </div>
-              <!-- End Item --> 
-              <!-- Item -->
-              <div class="item">
-                <div class="top-post">
-                  <figure class="featured-thumb"> <a href="#"> <img src="products-images/p7.jpg" alt="blog image"> </a> </figure>
-                  <!--featured-thumb-->
-                  <div class="content-info">
-                    <div class="post-category"><a href="#">诗歌</a></div>
-                    <h4><a href="post-1.html" title="Lorem ipsum dolor sit amet">占位符</a></h4>
-                  </div>
-                </div>
-              </div>
-              <!-- End Item --> 
-              <!-- Item -->
-              <div class="item">
-                <div class="top-post">
-                  <figure class="featured-thumb"> <a href="#"> <img src="products-images/p4.jpg" alt="blog image"> </a> </figure>
-                  <!--featured-thumb-->
-                  <div class="content-info">
-                    <div class="post-category"><a href="#">随笔</a></div>
-                    <h4><a href="post-1.html" title="Lorem ipsum dolor sit amet">占位符</a></h4>
-                  </div>
-                </div>
-              </div>
-              <!-- End Item --> 
-              
-              <!-- Item -->
-              <div class="item">
-                <div class="top-post">
-                  <figure class="featured-thumb"> <a href="#"> <img src="products-images/p5.jpg" alt="blog image"> </a> </figure>
-                  <!--featured-thumb-->
-                  <div class="content-info">
-                    <div class="post-category"><a href="#">杂文</a></div>
-                    <h4><a href="post-1.html" title="Lorem ipsum dolor sit amet">占位符</a></h4>
-                  </div>
-                </div>
-              </div>
-              <!-- End Item --> 
-              <!-- Item -->
-              <div class="item">
-                <div class="top-post">
-                  <figure class="featured-thumb"> <a href="#"> <img src="products-images/p6.jpg" alt="blog image"> </a> </figure>
-                  <!--featured-thumb-->
-                  <div class="content-info">
-                    <div class="post-category"><a href="#">其它</a></div>
-                    <h4><a href="post-1.html" title="Lorem ipsum dolor sit amet">占位符</a></h4>
-                  </div>
-                </div>
-              </div>
-              <!-- End Item --> 
-              
-            </div>
+
           </div>
         </div>
       </div>
@@ -293,15 +222,19 @@ pageEncoding="UTF-8"%>
     <div class="best-pro slider-items-products container">
       <div class="new_title">
         <h2>列表</h2>
+        <form action="/queryByAuthor" method="GET">
+          <input  type="text" name="author">
+          <input  type="submit"/>
+        </form>
 		<!--搜索框开始-->
 		<div class="collapse navbar-collapse">
-                  <form class="navbar-form" role="search">
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search">
-                      <span class="input-group-btn">
-                      <button type="submit" class="search-btn"> <span class="glyphicon glyphicon-search"> <span class="sr-only">Search</span> </span> </button>
-                      </span> </div>
-                  </form>
+<%--                  <form action="/queryByAuthor" method="GET" class="navbar-form" role="search">--%>
+<%--                    <div class="input-group">--%>
+<%--                      <input type="text" class="form-control" placeholder="Search" name="author">--%>
+<%--                      <span class="input-group-btn">--%>
+<%--                      <button type="submit" class="search-btn"> <span class="glyphicon glyphicon-search"> <span class="sr-only">Search</span> </span> </button>--%>
+<%--                      </span> </div>--%>
+<%--                  </form>--%>
 		</div>
 		<!--搜索框结束-->
       </div>
@@ -339,7 +272,41 @@ pageEncoding="UTF-8"%>
               </div>
             </div>
           </div>
-          <!-- End Item -->	  
+          <!-- End Item -->
+
+<%--          <!-- Item -->--%>
+<%--          <div class="item">--%>
+<%--            <div class="grid_item">--%>
+<%--              <div class="grid_image"><a href="post-1.html"><img alt="Young woman with shopping bags in a beautiful dress" src="products-images/p1.jpg"></a></div>--%>
+<%--              <div class="grid_description"><a class="tag " href="category-1.html" title="Fashion">乡村故事</a>--%>
+<%--                <h3 class="post_title"><a href="post-1.html" title="Young woman with shopping bags in a beautiful dress">占位符</a></h3>--%>
+<%--              </div>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--          <!-- End Item -->--%>
+
+<%--          <!-- Item -->--%>
+<%--          <div class="item">--%>
+<%--            <div class="grid_item">--%>
+<%--              <div class="grid_image"><a href="post-1.html"><img alt="Young woman with shopping bags in a beautiful dress" src="products-images/p1.jpg"></a></div>--%>
+<%--              <div class="grid_description"><a class="tag " href="category-1.html" title="Fashion">乡村故事</a>--%>
+<%--                <h3 class="post_title"><a href="post-1.html" title="Young woman with shopping bags in a beautiful dress">占位符</a></h3>--%>
+<%--              </div>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--          <!-- End Item -->--%>
+
+          <!-- Item -->
+          <div class="item">
+              <%
+                Iterator<Article> iterator=articles.iterator();
+                while(iterator.hasNext()){
+                  Article article=iterator.next();
+              %>
+                <p style="width: 200px"><a href="/showArticle?file_id=<%=article.getFile_id()%>"><%=article.getTitle()+"\t"+article.getAuthor()+"\t"+article.getDate()%></a></p>
+            <%}%>
+          </div>
+          <!-- End Item -->
         </div>
       </div>
     </div>

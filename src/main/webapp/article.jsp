@@ -1,5 +1,7 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Iterator" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -256,7 +258,7 @@ pageEncoding="UTF-8"%>
           <div id="main" class="blog-post">
             <article class="blog_entry clearfix">
 						
-						<h1 class="blog_entry-title">Icon internet world in the hands of a businessman network technology and communication</h1>
+						<h1 class="blog_entry-title">标题</h1>
                      
               <div class="entry-content">
                  <ul class="post-meta">
@@ -264,31 +266,16 @@ pageEncoding="UTF-8"%>
                         <li><i class="fa fa-comments"></i><a href="#">42 comments</a> </li>
                         <li><i class="fa fa-clock-o"></i>Feb 07, 2021</li>
                       </ul>
-                                            <div class="thm-post">
-<p>Fusce ac pharetra urna. Duis non lacus sit amet lacus interdum facilisis sed non est. Ut mi metus, semper eu dictum nec, condimentum sed sapien. Nullam lobortis nunc semper ipsum luctus ut viverra ante eleifend. Nunc pretium velit sed augue luctus accumsan.</p>
-<p>Aliquam laoreet consequat malesuada. Integer vitae diam sed dolor euismod laoreet eget ac felis. Donec non erat sed elit bibendum sodales. Donec eu cursus velit. Proin nunc lacus, gravida mollis dictum ut, vulputate eu turpis. Sed felis sapien, commodo in iaculis in, feugiat sed enim. Sed nunc ipsum, <strong>fermentum varius dignissim vitae, blandit et ante.Maecenas sagittis, lorem sed congue egestas, lectus purus congue nisl, ac molestie enim ligula nec eros. Sed leo tortor, tincidunt sit amet elementum vel, eleifend at orci. Maecenas ut turpis felis. Donec sit amet quam sem, et aliquet est.</strong></p>
-
-<blockquote>Lorem ipsum dolor sit amet, consecte adipiscing elit. Integer aliquam mi nec dolor placerat a condimentum diam mollis. Ut pulvinar neque eget massa dapibus dolor.</blockquote>
-<p>Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh suscipit ultrices. Morbi interdum accumsan arcu nec scelerisque. Phasellus eget purus nulla. Suspendisse quam est, tempor quis consectetur non, interdum vitae diam. Pellentesque volutpat mollis ligula in laoreet. Aenean est dui, sagittis in consequat at, adipiscing at risus.</p>
-<figure class="block-image"><img src="products-images/p23.jpg" alt="blog-img"></figure>
-<h2>Heading</h2>
-<p>Aenean est dui, sagittis in consequat at, adipiscing at risus. Sed suscipit, est vitae aliquam molestie, sem dolor dignissim leo, eget imperdiet enim urna in justo. Mauris pulvinar tortor lorem.
-</p>
-<ul>
-<li> Integer vitae diam sed dolor euismod laoreet eget ac felis. Donec non erat sed elit bibendum sodales. Gravida mollis dictum ut, vulputate eu turpis. Sed felis sapien, commodo in iaculis in, feugiat sed enim.</li>
-<li> Proin eget tortor risus. Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet</li>
-<li> Vivamus suscipit tortor eget felis porttitor volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat. Vivamus magna justo, lacinia eget consectetur sed</li>
-<li> Adipiscing at risus. Sed suscipit, est vitae aliquam molestie, sem dolor dignissim leo, eget imperdiet enim urna in justo ipsum dolor sit amet.</li>
-<li> Nunc ac sem eu libero pretium faucib. Quisque et semper odio. Praesent tortor ligula, imperdiet sed aliquet ut, pharetra at nisi. Etiam sit amet molestie est</li>
-</ul>
-<h3>Heading</h3>
-<p>Pellentesque volutpat mollis ligula in laoreet. Aenean est dui, sagittis in consequat at, adipiscing at risus. Sed suscipit, est vitae aliquam molestie, sem dolor dignissim leo, eget imperdiet enim urna in justo. Mauris pulvinar tortor lorem.</p>
-<h4>Heading</h4>
-<p>Commodo lobortis nibh, vitae accumsan velit dapibus sed. Nunc ac sem eu libero pretium faucib. Quisque et semper odio. Praesent tortor ligula, imperdiet sed aliquet</p>
-<h5>Heading</h5>
-<p>Lobortis nibh, vitae accumsan velit dapibus sed. Nunc ac sem eu libero pretium faucib. Quisque et semper odio. Praesent tortor ligula, imperdiet sed aliquet ut, pharetra at nisi. Etiam sit amet molestie est. Donec id turpis vitae leo viverra adipiscing at sed nisi.</p>
-
-
+                <div class="thm-post">
+                  <%List<String> article=(List<String>)request.getAttribute("article");%>
+                  <%
+                    Iterator<String> it=article.iterator();
+                    while(it.hasNext()){
+                      String line=it.next();
+                  %>
+                <p><%=line%></p>
+<%--<figure class="block-image"><img src="products-images/p23.jpg" alt="blog-img"></figure>--%>
+                  <%}%>
 </div>			
 </div>
 
