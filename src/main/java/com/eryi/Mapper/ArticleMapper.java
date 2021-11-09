@@ -2,6 +2,7 @@ package com.eryi.Mapper;
 
 import com.eryi.pojo.Article;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,5 +19,6 @@ public interface ArticleMapper {
     void add(Article article);
     List<Article> queryAll();
     List<Article> queryByAuthor(String author);
-    List<Article> queryByType(String Type);
+    List<Article> queryByType(@Param("type") String Type,@Param("start")int start,@Param("end")int end);
+    Article queryByFileId(@Param("file_id") String file_id);
 }

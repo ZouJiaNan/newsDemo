@@ -33,6 +33,7 @@
 <header>
   <%
     List<Article> articles=(List<Article>) request.getAttribute("articles");
+    String url="index";
   %>
   <div class="container">
     <div class="row">
@@ -104,15 +105,15 @@
                 </div>
               </div>
               <!--mini-cart-->
-              <div class="collapse navbar-collapse">
-                <form class="navbar-form" role="search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <span class="input-group-btn">
-                    <button type="submit" class="search-btn"> <span class="glyphicon glyphicon-search"> <span class="sr-only">Search</span> </span> </button>
-                    </span> </div>
-                </form>
-              </div>
+<%--              <div class="collapse navbar-collapse">--%>
+<%--                <form class="navbar-form" role="search">--%>
+<%--                  <div class="input-group">--%>
+<%--                    <input type="text" class="form-control" placeholder="Search">--%>
+<%--                    <span class="input-group-btn">--%>
+<%--                    <button type="submit" class="search-btn"> <span class="glyphicon glyphicon-search"> <span class="sr-only">Search</span> </span> </button>--%>
+<%--                    </span> </div>--%>
+<%--                </form>--%>
+<%--              </div>--%>
               <!--links--> 
             </div>
             <div class="fl-nav-menu">
@@ -124,10 +125,10 @@
                   <!-- BEGIN NAV -->
                   <ul id="nav" class="hidden-xs">
                     <li> <a class="level-top" href="/queryAll"><span>首页</span></a></li>
-                    <li> <a class="level-top" href="/queryByType?type=概况"><span>概况</span></a> </li>
-                    <li> <a class="level-top" href="/queryByType?type=小说‎"><span>小说‎</span></a></li>
-                    <li> <a class="level-top" href="/queryByType?type=散文"><span>散文</span></a></li>
-                    <li> <a class="level-top" href="/queryByType?type=诗歌"><span>诗歌</span></a> </li>
+                    <li> <a class="level-top" href="/queryByType?type=概况&start=0&end=10"><span>概况</span></a> </li>
+                    <li> <a class="level-top" href="/queryByType?type=小说‎&start=0&end=10"><span>小说‎</span></a></li>
+                    <li> <a class="level-top" href="/queryByType?type=散文&start=0&end=10"><span>散文</span></a></li>
+                    <li> <a class="level-top" href="/queryByType?type=诗歌&start=0&end=10"><span>诗歌</span></a> </li>
                   </ul>
                   <!--nav--> 
                 </div>
@@ -224,7 +225,9 @@
         <h2>列表</h2>
         <form action="/queryByAuthor" method="GET">
           <input  type="text" name="author">
-          <input  type="submit"/>
+          <input  type="submit" value="搜索"/>
+          <input type="hidden" name="url" value="index" />
+          <input type="hidden" name="file_id" value="null" />
         </form>
 		<!--搜索框开始-->
 		<div class="collapse navbar-collapse">
@@ -357,16 +360,16 @@
 <div id="mobile-menu">
   <ul>
     <li>
-      <div class="mm-search">
-        <form id="search1" name="search">
-          <div class="input-group">
-            <div class="input-group-btn">
-              <button class="btn btn-default" type="submit"><i class="fa fa-search"></i> </button>
-            </div>
-            <input type="text" class="form-control simple" placeholder="Search ..." name="srch-term" id="srch-term">
-          </div>
-        </form>
-      </div>
+<%--      <div class="mm-search">--%>
+<%--        <form id="search1" name="search">--%>
+<%--          <div class="input-group">--%>
+<%--            <div class="input-group-btn">--%>
+<%--              <button class="btn btn-default" type="submit"><i class="fa fa-search"></i> </button>--%>
+<%--            </div>--%>
+<%--            <input type="text" class="form-control simple" placeholder="Search ..." name="srch-term" id="srch-term">--%>
+<%--          </div>--%>
+<%--        </form>--%>
+<%--      </div>--%>
     </li>
     <li> <a class="level-top" href="#"><span>Home</span></a></li>
     <li><a href="category-1.html">Fashion</a></li>
@@ -408,42 +411,42 @@
     <li><a href="#">Travel</a></li>
   </ul>
 </div>
-<div class="popup1" style="display: block;">
-  <div class="newsletter-sign-box">
-    <h3>Newsletter Sign up</h3>
-    <img src="images/close-icon.png" alt="close" class="x" onClick="HideMe();">
-    <div class="newsletter">
-      <h4>Get Notified Of any Updates!</h4>
-      <form method="post" id="popup-newsletter" name="popup-newsletter" class="email-form">
-        <h5>sign up for our exclusive email list and be the first to hear of special offers.</h5>
-        <div class="newsletter-form">
-          <div class="input-box">
-            <input type="text" name="email" id="newsletter2" title="Sign up for our newsletter" placeholder="Enter your email address" class="input-text required-entry validate-email">
-            <button type="submit" title="Subscribe" class="button subscribe"><span>Subscribe</span></button>
-          </div>
-          <!--input-box--> 
-        </div>
-        <!--newsletter-form-->
-        <label class="subscribe-bottom">
-          <input type="checkbox" name="notshowpopup" id="notshowpopup">
-          Don’t show this popup again</label>
-      </form>
-    </div>
-    <!--newsletter--> 
-    
-  </div>
-  <!--newsletter-sign-box--> 
-</div>
-<div class="popup2" style="display: none;">
-  <div class="video-popup"> <img src="images/close-icon.png" alt="close" class="x" onclick="HideMe1();">
-    <video id="clip1" class="rounded"  muted="" autoplay preload=""  style="object-fit: cover; min-height:240px;
-    z-index: -100; width:100%">
-      <source src="products-images/fashion-videos.mp4" type="video/mp4">
-    </video>
-    <h3>Beautiful view of the wooden huts over the ocean captured in thailand</h3>
-  </div>
-</div>
-<div id="fade" style="display: block;"></div>
+<%--<div class="popup1" style="display: block;">--%>
+<%--  <div class="newsletter-sign-box">--%>
+<%--    <h3>Newsletter Sign up</h3>--%>
+<%--    <img src="images/close-icon.png" alt="close" class="x" onClick="HideMe();">--%>
+<%--    <div class="newsletter">--%>
+<%--      <h4>Get Notified Of any Updates!</h4>--%>
+<%--      <form method="post" id="popup-newsletter" name="popup-newsletter" class="email-form">--%>
+<%--        <h5>sign up for our exclusive email list and be the first to hear of special offers.</h5>--%>
+<%--        <div class="newsletter-form">--%>
+<%--          <div class="input-box">--%>
+<%--            <input type="text" name="email" id="newsletter2" title="Sign up for our newsletter" placeholder="Enter your email address" class="input-text required-entry validate-email">--%>
+<%--            <button type="submit" title="Subscribe" class="button subscribe"><span>Subscribe</span></button>--%>
+<%--          </div>--%>
+<%--          <!--input-box--> --%>
+<%--        </div>--%>
+<%--        <!--newsletter-form-->--%>
+<%--        <label class="subscribe-bottom">--%>
+<%--          <input type="checkbox" name="notshowpopup" id="notshowpopup">--%>
+<%--          Don’t show this popup again</label>--%>
+<%--      </form>--%>
+<%--    </div>--%>
+<%--    <!--newsletter--> --%>
+<%--    --%>
+<%--  </div>--%>
+<%--  <!--newsletter-sign-box--> --%>
+<%--</div>--%>
+<%--<div class="popup2" style="display: none;">--%>
+<%--  <div class="video-popup"> <img src="images/close-icon.png" alt="close" class="x" onclick="HideMe1();">--%>
+<%--    <video id="clip1" class="rounded"  muted="" autoplay preload=""  style="object-fit: cover; min-height:240px;--%>
+<%--    z-index: -100; width:100%">--%>
+<%--      <source src="products-images/fashion-videos.mp4" type="video/mp4">--%>
+<%--    </video>--%>
+<%--    <h3>Beautiful view of the wooden huts over the ocean captured in thailand</h3>--%>
+<%--  </div>--%>
+<%--</div>--%>
+<%--<div id="fade" style="display: block;"></div>--%>
 
 <!-- JavaScript --> 
 <script src="js/jquery-3.5.0.min.js"></script> 

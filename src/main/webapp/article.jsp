@@ -1,5 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
+<%@ page import="com.eryi.pojo.Article" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,9 +31,15 @@
 <link href="https://fonts.googleapis.com/css?family=Teko:300,400,500,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Saira+Condensed:300,400,500,600,700,800" rel="stylesheet">
 </head>
+<%
+  Article article=(Article)request.getAttribute("article");
+  List<Article> articles=new ArrayList<Article>();
+  if(request.getAttribute("articles")!=null) {
+    articles = (List<Article>) request.getAttribute("articles");
+  }
+%>
 <body>
 <div id="page">
-	
    <header>
   <div class="container">
     <div class="row">
@@ -102,16 +110,16 @@
                   <!--fl-mini-cart-content--> 
                 </div>
               </div>
-              <!--mini-cart-->
-              <div class="collapse navbar-collapse">
-                <form class="navbar-form" role="search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <span class="input-group-btn">
-                    <button type="submit" class="search-btn"> <span class="glyphicon glyphicon-search"> <span class="sr-only">Search</span> </span> </button>
-                    </span> </div>
-                </form>
-              </div>
+<%--              <!--mini-cart-->--%>
+<%--              <div class="collapse navbar-collapse">--%>
+<%--                <form class="navbar-form" role="search">--%>
+<%--                  <div class="input-group">--%>
+<%--                    <input type="text" class="form-control" placeholder="Search">--%>
+<%--                    <span class="input-group-btn">--%>
+<%--                    <button type="submit" class="search-btn"> <span class="glyphicon glyphicon-search"> <span class="sr-only">Search</span> </span> </button>--%>
+<%--                    </span> </div>--%>
+<%--                </form>--%>
+<%--              </div>--%>
               <!--links--> 
             </div>
             <div class="fl-nav-menu">
@@ -122,7 +130,7 @@
                 <div class="nav-inner"> 
                   <!-- BEGIN NAV -->
                   <ul id="nav" class="hidden-xs">
-                    <li> <a class="level-top" href="#"><span>首页</span></a></li>
+                    <li> <a class="level-top" href="index"><span>首页</span></a></li>
                     <li> <a class="level-top" href="category-1.html"><span>概况</span></a> </li>
                     <li> <a class="level-top" href="category-2.html"><span>小说‎</span></a></li>
                     <li> <a class="level-top" href="category-1.html"><span>散文</span></a></li>
@@ -143,6 +151,7 @@
       </div>
     </div>
   </div>
+  </div>
 </header>
   <div class="page-heading">
     <div class="breadcrumbs">
@@ -150,8 +159,8 @@
         <div class="row">
           <div class="col-xs-12">
             <ul>
-              <li class="home"> <a href="index.jsp" title="Go to Home Page">Home</a> <span>› </span> </li>
-              <li class="category1601"> <strong>Technology</strong> </li>
+<%--              <li class="home"> <a href="index.jsp" title="Go to Home Page">Home</a> <span>› </span> </li>--%>
+<%--              <li class="category1601"> <strong>固原日报·文艺副刊</strong> </li>--%>
             </ul>
           </div>
           <!--col-xs-12--> 
@@ -161,91 +170,19 @@
       <!--container--> 
     </div>
     <div class="page-title">
-      <h2>Technology</h2>
+      <h2>固原日报·文艺副刊</h2>
     </div>
   </div>
   <div class="top-cate">
     <div class="featured-pro container-fluid">
       <div>
-        <div class="slider-items-products">
-          <div id="top-categories" class="product-flexslider hidden-buttons">
-            <div class="slider-items slider-width-col4 products-grid">
-              <div class="item">
-                <div class="top-post">
-                  <figure class="featured-thumb"> <a href="#"> <img src="products-images/p1.jpg" alt="blog image"> </a> </figure>
-                  <!--featured-thumb-->
-                  <div class="content-info">
-                    <div class="post-category"><a href="#">小说</a></div>
-                    <h4><a href="post-1.html" title="Lorem ipsum dolor sit amet">占位符</a></h4>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Item -->
-              <div class="item">
-                <div class="top-post">
-                  <figure class="featured-thumb"> <a href="#"> <img src="products-images/p2.jpg" alt="blog image"> </a> </figure>
-                  <!--featured-thumb-->
-                  <div class="content-info">
-                    <div class="post-category"><a href="#">散文</a></div>
-                    <h4><a href="post-1.html" title="Lorem ipsum dolor sit amet">占位符</a></h4>
-                  </div>
-                </div>
-              </div>
-              <!-- End Item --> 
-              <!-- Item -->
-              <div class="item">
-                <div class="top-post">
-                  <figure class="featured-thumb"> <a href="#"> <img src="products-images/p7.jpg" alt="blog image"> </a> </figure>
-                  <!--featured-thumb-->
-                  <div class="content-info">
-                    <div class="post-category"><a href="#">诗歌</a></div>
-                    <h4><a href="post-1.html" title="Lorem ipsum dolor sit amet">占位符</a></h4>
-                  </div>
-                </div>
-              </div>
-              <!-- End Item --> 
-              <!-- Item -->
-              <div class="item">
-                <div class="top-post">
-                  <figure class="featured-thumb"> <a href="#"> <img src="products-images/p4.jpg" alt="blog image"> </a> </figure>
-                  <!--featured-thumb-->
-                  <div class="content-info">
-                    <div class="post-category"><a href="#">随笔</a></div>
-                    <h4><a href="post-1.html" title="Lorem ipsum dolor sit amet">占位符</a></h4>
-                  </div>
-                </div>
-              </div>
-              <!-- End Item --> 
-              
-              <!-- Item -->
-              <div class="item">
-                <div class="top-post">
-                  <figure class="featured-thumb"> <a href="#"> <img src="products-images/p5.jpg" alt="blog image"> </a> </figure>
-                  <!--featured-thumb-->
-                  <div class="content-info">
-                    <div class="post-category"><a href="#">杂文</a></div>
-                    <h4><a href="post-1.html" title="Lorem ipsum dolor sit amet">占位符</a></h4>
-                  </div>
-                </div>
-              </div>
-              <!-- End Item --> 
-              <!-- Item -->
-              <div class="item">
-                <div class="top-post">
-                  <figure class="featured-thumb"> <a href="#"> <img src="products-images/p6.jpg" alt="blog image"> </a> </figure>
-                  <!--featured-thumb-->
-                  <div class="content-info">
-                    <div class="post-category"><a href="#">其它</a></div>
-                    <h4><a href="post-1.html" title="Lorem ipsum dolor sit amet">占位符</a></h4>
-                  </div>
-                </div>
-              </div>
-              <!-- End Item --> 
-              
-            </div>
-          </div>
-        </div>
+<%--        <div class="slider-items-products">--%>
+<%--          <div id="top-categories" class="product-flexslider hidden-buttons">--%>
+<%--            <div class="slider-items slider-width-col4 products-grid">--%>
+<%--              --%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--        </div>--%>
       </div>
     </div>
   </div>
@@ -258,18 +195,18 @@
           <div id="main" class="blog-post">
             <article class="blog_entry clearfix">
 						
-						<h1 class="blog_entry-title">标题</h1>
+						<h1 class="blog_entry-title"><%=article.getTitle()%></h1>
                      
               <div class="entry-content">
                  <ul class="post-meta">
-                        <li><img src="images/member2.png" alt="auther"> <a href="#"> Karla Anderson  </a> </li>
-                        <li><i class="fa fa-comments"></i><a href="#">42 comments</a> </li>
-                        <li><i class="fa fa-clock-o"></i>Feb 07, 2021</li>
+                        <li><a href="#"> <%=article.getAuthor()%>  </a> </li>
+<%--                        <li><i class="fa fa-comments"></i><a href="#"><%=article.getTitle()%></a> </li>--%>
+                        <li><i class="fa fa-clock-o"></i><%=article.getDate()%></li>
                       </ul>
                 <div class="thm-post">
-                  <%List<String> article=(List<String>)request.getAttribute("article");%>
+                  <%List<String> context=article.getContext();%>
                   <%
-                    Iterator<String> it=article.iterator();
+                    Iterator<String> it=context.iterator();
                     while(it.hasNext()){
                       String line=it.next();
                   %>
@@ -295,28 +232,29 @@
         <aside class="col-sm-3 sidebar">
           <div class="blog-side">
             <div class="popular-posts widget block">
+              <form action="/queryByAuthor" method="GET">
+                <input  type="text" name="author">
+                <input  type="submit" value="搜索"/>
+                <input type="hidden" name="url" value="article">
+                <input type="hidden" name="file_id" value=<%=article.getFile_id()%>>
+              </form>
             </div>
             <div id="categories-2" class="widget widget_categories block" style="visibility: visible;">
-              <h2 class="widget-title">Categories</h2>
+              <h2 class="widget-title">文章列表</h2>
               <ul>
-                <li><a href="#">Fashion</a> <span class="count">2</span></li>
-                <li><a href="#">Politics</a> <span class="count">8</span></li>
-                <li><a href="#">Technology</a> <span class="count">3</span></li>
-                <li><a href="#">Sports</a> <span class="count">7</span></li>
-                <li><a href="#">Foods</a> <span class="count">4</span></li>
-                <li><a href="#">Travels</a> <span class="count">9</span></li>
-                <li><a href="#">Business</a> <span class="count">1</span></li>
-                <li><a href="#">Videos</a> <span class="count">8</span></li>
+                <%
+                  for (Article a:articles) {
+                %>
+                <li><a href="/showArticle?file_id=<%=a.getFile_id()%>"><%=a.getTitle()%>  <%=a.getAuthor()%>  <%=a.getDate()%></a> <!-- span class="count">2</span --></li>
+                <%
+                  }
+                %>
               </ul>
             </div>
             <!-- Banner Ad Block -->
             <div class="custom-slider">
               <div>
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                  <ol class="carousel-indicators">
-                    <li class="active" data-target="#carousel-example-generic" data-slide-to="0"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-                  </ol>
                   <div class="carousel-inner">
                     <div class="item"><img src="products-images/p28.jpg" alt="slide3">
                       <div class="carousel-caption"> <a class="tag " href="#" title="Fashion">Travels</a>
@@ -350,14 +288,7 @@
   <ul>
     <li>
       <div class="mm-search">
-        <form id="search1" name="search">
-          <div class="input-group">
-            <div class="input-group-btn">
-              <button class="btn btn-default" type="submit"><i class="fa fa-search"></i> </button>
-            </div>
-            <input type="text" class="form-control simple" placeholder="Search ..." name="srch-term" id="srch-term">
-          </div>
-        </form>
+
       </div>
     </li> <li> <a class="level-top" href="#"><span>Home</span></a></li>
     <li><a href="grid1.html">Accessories</a> 
@@ -515,6 +446,7 @@
     </li>
     <li><a href="#">Custom</a></li>
   </ul>
+</div>
 </div>
 <!-- JavaScript --> 
 <script src="js/jquery-3.5.0.min.js"></script> 

@@ -51,23 +51,24 @@ public class ArticleService {
         return articleMapper.queryByAuthor(author);
     }
 
-    public List<Article> queryByType(String type){
-        return articleMapper.queryByType(type);
+    public List<Article> queryByType(String type,int start,int end){
+        return articleMapper.queryByType(type,start,end);
     }
 
-    public List<String> article(String file_id){
-        List<String> article=new ArrayList<String>();
-
+    public Article article(String file_id){
+        List<String> context=new ArrayList<String>();
+        Article article=articleMapper.queryByFileId(file_id);
         try {
             if(file_id.contains("doc")||file_id.contains("docx")) {
-                article.add(DocUtil.readDocx("D:\\articles\\" + file_id));
+                context.add(DocUtil.readDocx("D:\\articles\\" + file_id));
             }
             if(file_id.contains("txt")) {
-                article = readFile("D:\\articles\\" + file_id, article);
+                context = readFile("D:\\articles\\" + file_id, context);
             }
         }catch (Exception e){
             e.printStackTrace();
         }
+        article.setContext(context);
         return article;
     }
 

@@ -1,5 +1,7 @@
 package com.eryi.pojo;
 
+import java.util.List;
+
 /**
  * @author ZouJiaNan
  * @version 1.0
@@ -13,6 +15,9 @@ public class Article {
     private String author;
     private String file_id;
     private String date;
+    private List<String> context;
+    private String start;
+    private String end;
 
     public int getId() {
         return id;
@@ -60,5 +65,13 @@ public class Article {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public List<String> getContext() {
+        return context;
+    }
+
+    public void setContext(List<String> context) {
+        this.context = context;
     }
 }

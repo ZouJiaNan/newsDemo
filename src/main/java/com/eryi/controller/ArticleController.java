@@ -53,16 +53,21 @@ public class ArticleController {
     }
 
     @GetMapping("/queryByAuthor")
-    public ModelAndView queryByAuthor(@RequestParam("author") String author){
-        ModelAndView modelAndView=new ModelAndView("index");
+    public ModelAndView queryByAuthor(@RequestParam("author") String author,@RequestParam("url")String url,@RequestParam("file_id")String file_id){
+        ModelAndView modelAndView=new ModelAndView(url);
         modelAndView.addObject("articles",articleService.queryByAuthor(author));
+        if("article".equals(url)){
+            modelAndView.addObject("article",articleService.article(file_id));
+        }
         return modelAndView;
     }
 
     @GetMapping("/queryByType")
-    public ModelAndView queryByType(@RequestParam("type") String type){
+    public ModelAndView queryByType(@RequestParam("type") String type,@RequestParam("start")String start,@RequestParam("end")String end){
         ModelAndView modelAndView=new ModelAndView("index");
-        modelAndView.addObject("articles",articleService.queryByType(type));
+        int s=Integer.parseInt(start);
+        int e=Integer.parseInt(end);
+        modelAndView.addObject("articles",articleService.queryByType(type,s,e));
         return modelAndView;
     }
 
@@ -70,7 +75,7 @@ public class ArticleController {
     public ModelAndView article(@RequestParam("file_id")String file_id){
         ModelAndView modelAndView=new ModelAndView("article");
         count++;
-        if(count!=1&&(new Date().getTime()-date.getTime()<5000)){
+        if(count!=1&&(new Date().getTime()-date.getTime()<3000)){
             return null;
         }
         date=new Date();

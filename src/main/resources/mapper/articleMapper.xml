@@ -10,7 +10,10 @@
     <select id="queryByAuthor" parameterType="com.eryi.pojo.Article" resultType="com.eryi.pojo.Article">
         select * from articles where author like CONCAT('%',#{author},'%') order by date desc ;
     </select>
-    <select id="queryByType" parameterType="com.eryi.pojo.Article" resultType="com.eryi.pojo.Article">
-        select * from articles where author like CONCAT('%',#{type},'%') order by date desc ;
+    <select id="queryByType"  resultType="com.eryi.pojo.Article">
+        select * from articles where type=#{type} order by date desc limit #{start},#{end};
+    </select>
+    <select id="queryByFileId" parameterType="String" resultType="com.eryi.pojo.Article">
+        select * from articles where file_id =#{file_id} ;
     </select>
 </mapper>
